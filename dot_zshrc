@@ -1,4 +1,7 @@
 export ZSH="$HOME/.oh-my-zsh"
+
+alias copy="xsel --input --clipboard"
+alias paste="xsel --output --clipboard"
 alias reload="source ~/.zshrc"
 
 ZSH_THEME="robbyrussell"
