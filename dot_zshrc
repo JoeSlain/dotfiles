@@ -4,6 +4,14 @@ alias copy="xsel --input --clipboard"
 alias paste="xsel --output --clipboard"
 alias reload="source ~/.zshrc"
 
+gx() {
+  if [ -z "$1" ]; then
+    echo "You must input a commit message"
+  else
+    git add . && git commit -m "$1" && git push
+  fi
+}
+
 ZSH_THEME="robbyrussell"
 
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
