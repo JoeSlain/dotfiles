@@ -3,6 +3,17 @@ export ZSH="$HOME/.oh-my-zsh"
 alias copy="xsel --input --clipboard"
 alias paste="xsel --output --clipboard"
 alias reload="source ~/.zshrc"
+alias config="code ~/.zshrc"
+alias pushall="git remote | xargs -L1 -I R git push R"
+
+
+stage(){
+  if [ -z "$1" ]; then
+    echo "You must input a branch"
+  else
+    gco staging && git merge "$1" && pushall
+  fi
+}
 
 gx() {
   if [ -z "$1" ]; then
@@ -13,7 +24,9 @@ gx() {
 }
 
 ZSH_THEME="robbyrussell"
+export ANDROID_HOME="/home/anon/Android/Sdk"
 
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
+
