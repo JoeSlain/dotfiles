@@ -5,8 +5,6 @@ alias paste="xsel --output --clipboard"
 alias reload="source ~/.zshrc"
 alias config="code ~/.zshrc"
 alias pushall="git remote | xargs -L1 -I R git push R"
-alias gx="git add . && git commit -m \"$1\" && git push"
-
 
 stage(){
   if [ -z "$1" ]; then
@@ -31,3 +29,5 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
+eval "$(zoxide init zsh)"
+eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
