@@ -6,6 +6,8 @@ alias reload="source ~/.zshrc"
 alias config="code ~/.zshrc"
 alias pushall="git remote | xargs -L1 -I R git push R"
 
+bindkey '^H' backward-kill-word
+
 stage(){
   if [ -z "$1" ]; then
     echo "You must input a branch"
