@@ -13,6 +13,12 @@ matches:
   - trigger: ":cueille"
     replace: "cueille@proton.me"
 
+  - trigger: ":beta"
+    replace: "joscelyn.cueille@beta.gouv.fr"
+
+  - trigger: ":hellobud"
+    replace: "joscelyn.cueille@hellobud.fr"
+
   # Print the current date
   - trigger: ":date"
     replace: "{{mydate}}"

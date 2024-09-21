@@ -5,9 +5,30 @@ alias paste="xsel --output --clipboard"
 alias reload="source ~/.zshrc"
 alias config="code ~/.zshrc"
 alias pushall="git remote | xargs -L1 -I R git push R"
+alias python='/usr/bin/python3'
+alias hellobud='code ~/dev/Hellobud'
+alias albert='code ~/dev/albert/franceservices-frontend'
 
 bindkey '^H' backward-kill-word
 
+
+# Copy all files of a folder and its subfolders
+copy_files() {
+  if [ -z "$1" ]; then
+    echo "Usage: copy_files <directory>"
+    return 1
+  fi
+
+  if [ ! -d "$1" ]; then
+    echo "Error: Directory '$1' does not exist"
+    return 1
+  fi
+
+  find "$1" -type f -exec cat {} \; | xsel --input --clipboard
+}
+
+
+# Merge the selected branch into staging and push
 stage(){
   if [ -z "$1" ]; then
     echo "You must input a branch"
@@ -16,6 +37,8 @@ stage(){
   fi
 }
 
+
+# Add, commit and push all changes
 gx() {
   if [ -z "$1" ]; then
     echo "You must input a commit message"
@@ -26,6 +49,7 @@ gx() {
 
 ZSH_THEME="robbyrussell"
 export ANDROID_HOME="/home/anon/Android/Sdk"
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
@@ -33,3 +57,22 @@ source $ZSH/oh-my-zsh.sh
 
 eval "$(zoxide init zsh)"
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
+. "$HOME/.cargo/env"
+
+# bun completions
+[ -s "/home/anon/.bun/_bun" ] && source "/home/anon/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export KEYCLOAK_POSTGRES_PASSWORD=changeme
+export DSFR_THEME_SERVICE_TITLE=CodeGouv
+export DSFR_THEME_LOGIN_HTML=""
+export DSFR_THEME_BRAND_TOP="République<br/>Française"
+export DSFR_THEME_TOS_URL='{ "fr": "https://code.gouv.fr/sill/tos_fr.md", "en": "https://code.gouv.fr/sill/tos_en.md" }'
+export DSFR_THEME_CONTACT_EMAIL=sill@code.gouv.fr
+export COMPOSE_PROJECT_NAME=albert-auth
+
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/go
+export PATH=G$GOPATH/bin:$PATH
