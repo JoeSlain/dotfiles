@@ -1,0 +1,39 @@
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[user]
+	email = cueille@protonmail.com
+	name = Joe Slain
+[init]
+	defaultBranch = main
+
+
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+[core]
+	editor = code
+[fetch]
+	prune = true
+[merge]
+	conflictstyle = diff3
+[push]
+	autoSetupRemote = true
+[color]
+    ui = auto
+[rerere]
+	enabled = true
+[branch]
+	sort = -committerdate
+[status]
+	short = true
+	branch = true
+[maintenance]
+	auto = true
+	strategy = incremental
+[rebase]
+	updateRefs = true
+[diff]
+	algorithm = histogram
